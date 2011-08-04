@@ -44,6 +44,9 @@ suggest.js : <http://www.enjoyxstudy.com/javascript/suggest/>
 1.00 (2008/04/26):
 - 最初のバージョン
 
+** 1.00時代のURLからのリダイレクトについて
+hdlbase.old.xdbというファイル名でその当時のhdlbase.xdbのコピーを用意しておく必要があります
+
 http://www.fujidig.com/ohdl/
 
 -----
