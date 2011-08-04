@@ -1,0 +1,120 @@
+<%= head(h(title), 
+         '<a href="'+h(@urimapper.home())+'">Home</a> &rsaquo; ' \
+         '<a href="'+h(@urimapper.refcat(category.name))+'">Reference - '+h(dll_disp(category.name))+'</a> &rsaquo; ' \
+         '<strong>'+h(title)+'</strong>')
+%>
+<h1><%=h title %></h1>
+% # summary
+<p class="summary"><%=h @ref.summary %></p>
+% # parameter
+% prm = @ref.prm
+% unless prm.empty?
+%  if prm[0] == ?( && prm[-1] == ?)
+<p><span class="arg">val = </span><span class="symbol"><%=h @ref.name %>(</span><span class="arg"><%=h prm[1..-2] %></span><span class="symbol">)</span></p>  
+%  else
+<p><span class="symbol"><%=h @ref.name %></span> <span class="arg"><%=h prm %></span></p>
+%  end
+% else
+<p><span class="symbol"><%=h @ref.name %></span></p>
+% end
+
+% unless @ref.prm2.empty?
+<pre class="para"><%= html_enc_spider(@ref.prm2) %></pre>
+% end
+
+% unless @ref.mod.empty?
+<p>(プラグイン / モジュール : <a href="<%=h @urimapper.refcat(category.name) %>"><%=h category.name %></a>)</p>
+% end
+
+% unless @ref.inst.empty?
+<h2>解説</h2>
+<%= inline_html(@ref.inst) %>
+% end
+
+% unless @ref.sample.empty?
+<h2>サンプル</h2>
+<pre class="script"><%= html_enc_spider(@ref.sample) %></pre>
+% end
+
+% unless @ref.href.empty?
+<h2>関連項目</h2>
+<div class="para"><table>
+%  @ref.href.each_line do |line|
+%   line.chomp!
+%   ref = @db.refs.find_by_name(line)
+%   if ref
+%    unless ref.mod.empty?
+<tr><td><a href="<%=h @urimapper.rid(ref) %>"><%=h ref.name %></a><td><%=h ref.summary %><td>(<a href="<%=h @urimapper.refcat(ref.category.name)%>"><%=h ref.mod %></a>)</tr>
+%    else
+<tr><td><a href="<%=h @urimapper.rid(ref) %>"><%=h ref.name %></a><td colspand=2><%=h ref.summary %></tr>
+%    end
+%   else
+<tr><td colspan=3><a href="<%=h @urimapper.menu(line) %>" class="find" title="検索" target="hdlmenu"><%=h line %></a></tr>
+%   end
+%  end
+</table></div>
+% end
+
+% samples = @db.search_sample(@ref.name)
+% unless samples.empty?
+<h2>サンプル逆引き (<%=h samples.size %>)</h2>
+<div class="para">
+%  samples.each do |sample|
+<% if samples.size > 10 then %><div style="width:<%= sample.title.size / 16 * 8 + 8 %>em; float:left"><% end %>
+<a href="<%=h @urimapper.did(sample) %>"><%=h sample.title %></a>
+<% if samples.size > 10 then %></div><% else %><br><% end %>
+%  end
+<div style="clear:both;"></div>
+</div>
+% end
+
+<h2>情報</h2>
+<div class="para"><table>
+% unless @ref.mod.empty?
+<tr><td>プラグイン / モジュール<td><a href="<%=h @urimapper.refcat(category.name) %>" title="一覧"><%= ex_html_enc(@ref.mod) %></a></tr>
+% end
+% unless @ref.ver.empty?
+<tr><td>バージョン<td><%= ex_html_enc(@ref.ver) %></tr>
+% end
+% unless @ref.date.empty?
+<tr><td>作成日<td><%= ex_html_enc(@ref.date) %></tr>
+% end
+% unless @ref.author.empty?
+<tr><td>著作者<td><%= ex_html_enc(@ref.author) %></tr>
+% end
+% unless @ref.url.empty?
+<tr><td nowrap>URL<td><%= html_enc_spider(@ref.url, true) %></tr>
+% end
+% unless @ref.note.empty?
+<tr><td nowrap>備考<td><%= html_enc_spider(@ref.note, true) %></tr>
+% end
+% unless @ref.type.empty?
+<tr><td>タイプ<td><%= ex_html_enc(@ref.type) %></tr>
+% end
+% unless @ref.group3.empty?
+<tr><td>グループ<td><%= ex_html_enc(@ref.group3) %></tr>
+% end
+% unless @ref.port.empty?
+<tr><td>対応環境<td>
+<ul style="margin:0px 0px 0px 16px;">
+%  @ref.port.each_line do |line|
+%   line.chomp!
+%   if ENVSTR[line]
+<li><%=h ENVSTR[line] %></li>
+%   else
+<li>その他 : <%=h line %></li>
+%   end
+%  end
+</ul></tr>
+% end
+% unless @ref.portinf.empty?
+<tr><td nowrap>移植のヒント<td><%= html_enc_spider(@ref.portinf, true)%></tr>
+% end
+% path = @ref.path.gsub("\\", "/")
+% if File.dirname(path).downcase == 'common'
+<tr><td>ヘッダファイル<td><a href="<%= h(@urimapper.uri + path) %>"><%= ex_html_enc(@ref.path) %></a></tr>
+% else
+<tr><td>hs ファイル<td><a href="<%= h(@urimapper.uri + path) %>"><%= ex_html_enc(@ref.path) %></a></tr>
+% end
+</table></div>
+<%= foot() %>

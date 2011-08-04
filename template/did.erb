@@ -1,0 +1,20 @@
+<%= head(h(@doc.title), 
+         '<a href="'+h(@urimapper.home())+'">Home</a> &rsaquo; ' \
+         '<a href="'+h(@urimapper.cat(category))+'">'+
+         h(secname+' - '+dll_disp(category.name))+'</a> &rsaquo; ' \
+         '<strong>'+h(@doc.title)+'</strong>')
+%>
+<h1><%=h @doc.title %></h1>
+
+<p class="location"><%=h @doc.path %>
+<% if @content %><a href="<%=h @urimapper.did(@doc, 'plain') %>">&raquo; Plain Format</a><% end %>
+</p>
+% if thumb = thumb_img(@doc)
+<div class="para"><%= thumb %></div>
+% end
+% if @content
+<pre class="<%= is_sample ? 'script' : 'para' %>"><%= html_enc_spider(@content) %></pre>
+% else
+<p class="summary"><%=h @doc.path %> ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB</p>
+% end
+<%= foot() %>

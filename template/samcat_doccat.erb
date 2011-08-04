@@ -1,0 +1,46 @@
+<%= head(h("#{secname} - #{catego_disp(@category.name)}"),
+         '<a href="'+h(@urimapper.home())+'">Home</a> &rsaquo; <strong>'+h("#{secname} - #{catego_disp(@category.name)}")+'</strong>')
+%>
+
+% # セクションセレクタ
+<div class="cmenu">
+<a class="citem" href="<%=h @urimapper.refcat() %>"><%= cats_ref() %></a>
+% if mode == ?D
+<span class="citemb"><%= cats_doc() %></span>
+<a class="citem" href="<%=h @urimapper.samcat() %>"><%= cats_sample() %></a>
+% else
+<a class="citem" href="<%=h @urimapper.doccat() %>"><%= cats_doc() %></a>
+<span class="citemb"><%= cats_sample() %></span>
+% end
+<div style="clear:both;"></div>
+
+% # カテゴリ セレクタ
+% cats.each do |cat|
+%  if cat.name == @category.name
+<span class="citemb"><%=h catego_disp(cat.name) %>&nbsp;<small><%=h cat.size %></small></span>
+%  else
+<a class="citem" href="<%=h @urimapper.cat(cat) %>"><%=h catego_disp(cat.name) %> <small><%=h cat.size %></small></a>
+%  end
+% end
+<div style="clear:both;"></div>
+</div>
+
+% # content
+<h1><%=h catego_disp(@category.name) %></h1>
+<div class="itemsub">Path : <%= left_html_enc(@category.directories.join(" , "), 300) %></div>
+
+% i = 0
+% @category.each_order_by_dir do |doc|
+<div class="item">
+<a href="<%=h @urimapper.did(doc) %>"><%=h doc.title %>
+%   if i < 500 and thumb = thumb_img(doc)
+<br><%= thumb %>
+%   end
+</a><br>
+<%=h omit_content(doc) %><br>
+<span class="url"><%=h doc.path %> - <%=h file_mtime(doc.path.gsub('\\','/')) %></span>
+</div>
+%   i += 1
+% end
+
+<%= foot() %>

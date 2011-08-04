@@ -1,0 +1,52 @@
+* Online HSP Document Library 1.32
+Online HSP Document LibraryはHSP Document Library(HDL)のCGIへの移植です。
+HSP Document Library: <http://sprocket.babyblue.jp/html/dlpage.htm#hdl>
+HDLのHTML出力部分を移植し、データベースはHDLにより作られたものを流用しています。
+
+** 動かすのに必要なもの
+- Apache
+-- CGI が使えるようにしておくこと
+-- .htaccess が使えるようにしておくこと
+-- mod_rewrite を有効にしておくこと
+- Ruby 1.8
+- SQlite3
+- sqlite3-ruby (http://rubyforge.org/projects/sqlite-ruby/)
+
+** 動かすには
+1. HSP のドキュメントと HDL によって生成されたデータベースファイルをコピーしてきます
+   - HSP のドキュメントは common/, doclib/, hsphelp/, sample/, index.htm, main.css, single.css です。
+   - HDL によって生成されたデータベースファイルは %APPDATA%/Hot Soup Processor 以下にあります。それを hdlbase.xdb というファイル名でコピーします。
+2. index.cgi, ohdl.cgi, admin/* に実行権限をつけます。 (Windows では必要ありません)
+3. admin に移動し、create_htpasswd.rb を Ruby で実行し、 admin 以下にウェブからアクセスするための BASIC 認証をつけます。
+   - 実行したら BASIC 認証のためのアカウント名とパスワードが聞かれるので入力します
+4. add_moved_table.rb を実行します
+5. ウェブから ohdl/admin/create_cache.cgi にアクセスし、キャッシュを全て作成します （作成しなくても動作はしますが遅いでしょう）
+6. これでウェブから ohdl/ にアクセスすれば OHDL が動いているはずです。
+
+** キャッシュについて
+OHDL にアクセスされても自動でキャッシュが更新されることはありません。
+ドキュメントの更新をしたら必ずキャッシュも生成しなおしてください。
+
+** 更新履歴
+
+1.32 (2009/6/26):
+- HDL 1.32 までの更新を反映
+- キャッシュを実装
+- ドキュメントの引越しがあったとき、過去のパスからもアクセスできるようにリダイレクト
+- suggest.js を使って検索ボックスに入力補完を追加
+suggest.js : <http://www.enjoyxstudy.com/javascript/suggest/>
+
+1.20 (2008/07/12):
+- HDL 1.10、 1.20 の更新を反映
+- mod_rewrite を使って ohdl.cgi?page=main&cmd=hid&arg=9 のような URI から reference/d3module/d3getpos/ のようなわかりやすい URI へ
+- 過去の URI からのリダイレクトも行います
+
+1.00 (2008/04/26):
+- 最初のバージョン
+
+http://www.fujidig.com/ohdl/
+
+-----
+fujidig / FUJI
+fuji.rosen@gmail.com
+http://www.fujidig.com/

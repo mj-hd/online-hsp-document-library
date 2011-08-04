@@ -1,0 +1,8 @@
+AddType "text/html; charset=Shift_JIS" html htm
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} \.(txt|hsp)$
+RewriteRule ^ index.cgi [L]
+</IfModule>

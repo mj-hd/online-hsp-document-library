@@ -1,0 +1,56 @@
+if (typeof OHDL == 'undefined') {
+	OHDL = {};
+}
+
+% require 'set'
+% category_names = @db.refcats.map {|cat| cat.name }
+% categories_map = {}
+% category_names.each_with_index do |name,i|
+%   categories_map[name] = i
+% end
+
+OHDL.CategoryList = [
+% len = category_names.size
+% category_names.each_with_index do |name, i|
+%   name = name.empty? ? "_builtin" : name
+  <%= to_js_string_literal(name) %><%= ',' if i < len - 1 %>
+%  end
+];
+
+OHDL.FunctionList = [
+% names = @db.refs.map {|ref| ref.name }.sort {|a, b|
+%   r = a.size <=> b.size
+%   next r if r != 0
+%   a.casecmp(b)
+% }
+% len = names.size
+% names.each_with_index do |name, i|
+  <%= to_js_string_literal(name) %><%= ',' if i < len - 1 %>
+% end
+];
+
+OHDL.FunctionCategoryMap = [
+% ids = names.map {|name| categories_map[@db.refs.find_by_name(name).mod] }
+% len = ids.size
+% ids.each_with_index do |id, i|
+<%= id == nil ? "null" : id %><%= ",\t" if i < len - 1 -%>
+% end
+];
+
+OHDL.getFuncId = function(name) {
+	var names = OHDL.FunctionList;
+	var len = names.length;
+	var searchName = name.toLowerCase();
+	for(var i = 0; i < len; i ++) {
+		if (names[i].toLowerCase() == searchName) break;
+	}
+	return i >= len ? null : i;
+}
+
+OHDL.getReferenceURIByFuncName = function(name) {
+	var id = OHDL.getFuncId(name);
+	if (id == null) return null;
+	var regularName = OHDL.FunctionList[id];
+	var categoryName = OHDL.CategoryList[OHDL.FunctionCategoryMap[id]];
+	return <%= to_js_string_literal(@urimapper.uri) %> + "reference/" + encodeURIComponent(categoryName) + "/" + encodeURIComponent(regularName) + "/";
+}
