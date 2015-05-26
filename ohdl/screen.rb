@@ -295,18 +295,18 @@ module OHDL
     # (HTML Enc & シンボル オートリンク & URL オートリンク)
     def html_enc_spider(src, brmode = false)
       @db.create_ref_name_cache
-      scanner = StringScanner.new(src.force_encoding("ASCII-8BIT"))
+      scanner = StringScanner.new(src)
       dest = ''
       cache = {}
       until scanner.eos?
         case
         when brmode && scanner.scan(/\n/)
           dest << '<br>'
-        when scanner.scan(/(?:https?|ftp):\/\/[^\x00- "'(),\\\x7f-\xff]+/n) #"
-          escaped_uri = html_escape(scanner.matched.force_encoding("UTF-8"))
+        when scanner.scan(/(https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+/n)
+          escaped_uri = html_escape(scanner.matched)
           dest << "<a href=\"#{escaped_uri}\" target=\"_top\">#{escaped_uri}</a>"
         when scanner.scan(/[A-Za-z0-9_#%$.]{2,40}/)
-          word = scanner.matched.force_encoding("UTF-8")
+          word = scanner.matched
           unless replace_html = cache[word]
             reference = @db.refs.find_by_name(word)
             if reference
@@ -330,7 +330,7 @@ module OHDL
         #when scanner.scan(/["&<>]/)
         #  dest << '&#%d;' % scanner.matched[0]
         when scanner.scan(/[^\nA-Za-z0-9_#%$]+|./m) #(/[^\nA-Za-z0-9_#%$"&<>]+|./m)
-          dest << h(scanner.matched.force_encoding("UTF-8"))
+          dest << h(scanner.matched)
         else
           raise Exception, 'must not happen'
         end
