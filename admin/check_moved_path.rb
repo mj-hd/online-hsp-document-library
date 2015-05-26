@@ -6,10 +6,10 @@ require 'pathname'
 require 'uri'
 require 'cgi'
 Dir.chdir Pathname(File.dirname($0)).parent
-require 'ohdl/config'
-require 'ohdl/application'
-require 'ohdl/screen'
-require 'ohdl/database'
+require './ohdl/config'
+require './ohdl/application'
+require './ohdl/screen'
+require './ohdl/database'
 
 def parse_request(uri_str)
   uri = URI(uri_str)

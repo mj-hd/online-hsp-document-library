@@ -2,10 +2,10 @@
 
 # 過去の URI からのリダイレクトを行う
 
-require 'ohdl/config'
-require 'ohdl/application'
-require 'ohdl/database'
-require 'ohdl/screen'
+require './ohdl/config'
+require './ohdl/application'
+require './ohdl/database'
+require './ohdl/screen'
 require 'cgi'
 require 'uri'
 

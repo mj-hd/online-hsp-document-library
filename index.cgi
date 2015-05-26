@@ -1,10 +1,10 @@
 #!/usr/local/bin/ruby -Ks
 
 begin
-  require 'ohdl/config'
-  require 'ohdl/application'
-  require 'ohdl/database'
-  require 'ohdl/screen'
+  require './ohdl/config'
+  require './ohdl/application'
+  require './ohdl/database'
+  require './ohdl/screen'
 
   config = OHDL::Config.new()
   db = OHDL::Database.new(config.dbfilename)

@@ -7,7 +7,7 @@
 require 'pathname'
 require 'uri'
 Dir.chdir Pathname(File.dirname($0)).parent
-require 'ohdl/database'
+require './ohdl/database'
 
 def main
   add_all_files 'docs', 'doclib'

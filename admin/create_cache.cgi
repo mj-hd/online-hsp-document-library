@@ -5,10 +5,10 @@ require 'cgi'
 require 'fileutils'
 require 'stringio'
 Dir.chdir Pathname(File.dirname($0)).parent
-require 'ohdl/config'
-require 'ohdl/application'
-require 'ohdl/screen'
-require 'ohdl/database'
+require './ohdl/config'
+require './ohdl/application'
+require './ohdl/screen'
+require './ohdl/database'
 
 @all_targets = %w(home frameset verinfo menu opensearch refs docsams refcats doccats samcats function_list_js)
 @targets_map = {

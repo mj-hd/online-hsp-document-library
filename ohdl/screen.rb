@@ -1,4 +1,4 @@
-require 'ohdl/cache'
+require './ohdl/cache'
 require 'erb'
 require 'strscan'
 require 'kconv'
@@ -233,7 +233,7 @@ module OHDL
     end
 
     def load(id)
-      File.read("#{@prefix}/#{id}.erb")
+      File.read("#{@prefix}/#{id}.erb", encoding: "UTF-8")
     end
   end
   
@@ -515,7 +515,7 @@ module OHDL
       realpath = File.expand_path(path.gsub('\\','/'))
       return nil unless realpath.index(Dir.pwd) == 0
       begin
-        File.read(realpath)
+        File.read(realpath, encoding: "UTF-8")
       rescue SystemCallError
         nil
       end
