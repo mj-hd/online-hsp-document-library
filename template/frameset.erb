@@ -1,15 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 <html lang="ja"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><%=h APPNAME %></title>
-<link rel="search" type="application/opensearchdescription+xml" href="<%=h @urimapper.opensearch %>" title="HSPリファレンス">
+<link rel="search" type="application/opensearchdescription+xml" href="<%=h @urimapper.opensearch %>" title="HSP繝ｪ繝輔ぃ繝ｬ繝ｳ繧ｹ">
 </head>
 <frameset cols='205,*'>
-<frame src="<%=h @urimapper.menu(@query) %>" title="<%=h @query.empty? ? 'メニュー' : @query+'の検索結果'%>" name="hdlmenu">
+<frame src="<%=h @urimapper.menu(@query) %>" title="<%=h @query.empty? ? '繝｡繝九Η繝ｼ' : @query+'縺ｮ讀懃ｴ｢邨先棡'%>" name="hdlmenu">
 %#% if ref = @db.refs.find_by_name(@query)
-%#<frame src="<%=h @urimapper.rid(ref) %>" title="<%=h @query %>のリファレンス" name="hdlmain">
+%#<frame src="<%=h @urimapper.rid(ref) %>" title="<%=h @query %>縺ｮ繝ｪ繝輔ぃ繝ｬ繝ｳ繧ｹ" name="hdlmain">
 %#% else
-<frame src="<%=h @urimapper.home %>" title="ホーム" name="hdlmain">
+<frame src="<%=h @urimapper.home %>" title="繝帙�ｼ繝" name="hdlmain">
 %#% end
 </frameset>
 </html>

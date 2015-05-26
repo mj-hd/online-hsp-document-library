@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <base target="hdlmain">
@@ -14,21 +14,21 @@
 <div class="head"><%=h APPNAME %></div>
 <form target="_self" action="<%=h @urimapper.menu() %>" method="get" class="head" name="search_form">
 <input type="text" value="<%=h @query %>" name="q" class="srchbox">
-<input type="submit" value="ŒŸõ" class="srchbtn">
+<input type="submit" value="æ¤œç´¢" class="srchbtn">
 </form>
 % if index?
-<div class="control">ƒ‰ƒCƒuƒ‰ƒŠ ƒƒjƒ…[</div>
+<div class="control">ãƒ©ã‚¤ãƒ–ãƒ©ãƒª ãƒ¡ãƒ‹ãƒ¥ãƒ¼</div>
 % else
-<div class="control"><%=h @query %> ‚ÌŒŸõŒ‹‰Ê <a target="_self" href="<%=h @urimapper.menu() %>">[Reset]</a></div>
+<div class="control"><%=h @query %> ã®æ¤œç´¢çµæœ <a target="_self" href="<%=h @urimapper.menu() %>">[Reset]</a></div>
 % end
 
 % each_section do |mode, secname, cats, models|
 %   result = search_result(cats, models)
 
-<div class="mh1"><a href="<%=h @urimapper.section(cats) %>"><%=h secname %> (<%=h result.size %> ƒJƒeƒSƒŠ)</a></div>
+<div class="mh1"><a href="<%=h @urimapper.section(cats) %>"><%=h secname %> (<%=h result.size %> ã‚«ãƒ†ã‚´ãƒª)</a></div>
 <div class="md1">
 %   if result.empty?
-<p>ŠY“–‚·‚éƒy[ƒW‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñB</p>
+<p>è©²å½“ã™ã‚‹ãƒšãƒ¼ã‚¸ã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚</p>
 %   else
 %     disp_css = index? ? ' style="display:none;"' : ''
 %     result.each do |category, models|
@@ -37,7 +37,7 @@
 </a></div>
 <div<%= disp_css %>>
 %       if index?
-<p><a href="<%=h @urimapper.cat_with_section(category, cats) %>"><%=h catego_disp(category, mode) %> ‚ÌƒJƒ^ƒƒO</a>
+<p><a href="<%=h @urimapper.cat_with_section(category, cats) %>"><%=h catego_disp(category, mode) %> ã®ã‚«ã‚¿ãƒ­ã‚°</a>
 %       end
 %       if mode == ?R
 %          prev_group = nil
@@ -73,7 +73,7 @@
 
 % names = @db.mosikasite(@query)
 % if not names.empty?
-<div class="control">‚à‚µ‚©‚µ‚Ä :
+<div class="control">ã‚‚ã—ã‹ã—ã¦ :
 %  names.each do |name|
 <em><a target="_self" href="<%=h @urimapper.menu(name) %>"><%=h name %></a></em>
 %  end

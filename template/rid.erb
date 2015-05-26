@@ -23,21 +23,21 @@
 % end
 
 % unless @ref.mod.empty?
-<p>(ƒvƒ‰ƒOƒCƒ“ / ƒ‚ƒWƒ…[ƒ‹ : <a href="<%=h @urimapper.refcat(category.name) %>"><%=h category.name %></a>)</p>
+<p>(ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ / ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ« : <a href="<%=h @urimapper.refcat(category.name) %>"><%=h category.name %></a>)</p>
 % end
 
 % unless @ref.inst.empty?
-<h2>‰ğà</h2>
+<h2>è§£èª¬</h2>
 <%= inline_html(@ref.inst) %>
 % end
 
 % unless @ref.sample.empty?
-<h2>ƒTƒ“ƒvƒ‹</h2>
+<h2>ã‚µãƒ³ãƒ—ãƒ«</h2>
 <pre class="script"><%= html_enc_spider(@ref.sample) %></pre>
 % end
 
 % unless @ref.href.empty?
-<h2>ŠÖ˜A€–Ú</h2>
+<h2>é–¢é€£é …ç›®</h2>
 <div class="para"><table>
 %  @ref.href.each_line do |line|
 %   line.chomp!
@@ -49,7 +49,7 @@
 <tr><td><a href="<%=h @urimapper.rid(ref) %>"><%=h ref.name %></a><td colspand=2><%=h ref.summary %></tr>
 %    end
 %   else
-<tr><td colspan=3><a href="<%=h @urimapper.menu(line) %>" class="find" title="ŒŸõ" target="hdlmenu"><%=h line %></a></tr>
+<tr><td colspan=3><a href="<%=h @urimapper.menu(line) %>" class="find" title="æ¤œç´¢" target="hdlmenu"><%=h line %></a></tr>
 %   end
 %  end
 </table></div>
@@ -57,7 +57,7 @@
 
 % samples = @db.search_sample(@ref.name)
 % unless samples.empty?
-<h2>ƒTƒ“ƒvƒ‹‹tˆø‚« (<%=h samples.size %>)</h2>
+<h2>ã‚µãƒ³ãƒ—ãƒ«é€†å¼•ã (<%=h samples.size %>)</h2>
 <div class="para">
 %  samples.each do |sample|
 <% if samples.size > 10 then %><div style="width:<%= sample.title.size / 16 * 8 + 8 %>em; float:left"><% end %>
@@ -68,53 +68,53 @@
 </div>
 % end
 
-<h2>î•ñ</h2>
+<h2>æƒ…å ±</h2>
 <div class="para"><table>
 % unless @ref.mod.empty?
-<tr><td>ƒvƒ‰ƒOƒCƒ“ / ƒ‚ƒWƒ…[ƒ‹<td><a href="<%=h @urimapper.refcat(category.name) %>" title="ˆê——"><%= ex_html_enc(@ref.mod) %></a></tr>
+<tr><td>ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ / ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«<td><a href="<%=h @urimapper.refcat(category.name) %>" title="ä¸€è¦§"><%= ex_html_enc(@ref.mod) %></a></tr>
 % end
 % unless @ref.ver.empty?
-<tr><td>ƒo[ƒWƒ‡ƒ“<td><%= ex_html_enc(@ref.ver) %></tr>
+<tr><td>ãƒãƒ¼ã‚¸ãƒ§ãƒ³<td><%= ex_html_enc(@ref.ver) %></tr>
 % end
 % unless @ref.date.empty?
-<tr><td>ì¬“ú<td><%= ex_html_enc(@ref.date) %></tr>
+<tr><td>ä½œæˆæ—¥<td><%= ex_html_enc(@ref.date) %></tr>
 % end
 % unless @ref.author.empty?
-<tr><td>’˜ìÒ<td><%= ex_html_enc(@ref.author) %></tr>
+<tr><td>è‘—ä½œè€…<td><%= ex_html_enc(@ref.author) %></tr>
 % end
 % unless @ref.url.empty?
 <tr><td nowrap>URL<td><%= html_enc_spider(@ref.url, true) %></tr>
 % end
 % unless @ref.note.empty?
-<tr><td nowrap>”õl<td><%= html_enc_spider(@ref.note, true) %></tr>
+<tr><td nowrap>å‚™è€ƒ<td><%= html_enc_spider(@ref.note, true) %></tr>
 % end
 % unless @ref.type.empty?
-<tr><td>ƒ^ƒCƒv<td><%= ex_html_enc(@ref.type) %></tr>
+<tr><td>ã‚¿ã‚¤ãƒ—<td><%= ex_html_enc(@ref.type) %></tr>
 % end
 % unless @ref.group3.empty?
-<tr><td>ƒOƒ‹[ƒv<td><%= ex_html_enc(@ref.group3) %></tr>
+<tr><td>ã‚°ãƒ«ãƒ¼ãƒ—<td><%= ex_html_enc(@ref.group3) %></tr>
 % end
 % unless @ref.port.empty?
-<tr><td>‘Î‰ŠÂ‹«<td>
+<tr><td>å¯¾å¿œç’°å¢ƒ<td>
 <ul style="margin:0px 0px 0px 16px;">
 %  @ref.port.each_line do |line|
 %   line.chomp!
 %   if ENVSTR[line]
 <li><%=h ENVSTR[line] %></li>
 %   else
-<li>‚»‚Ì‘¼ : <%=h line %></li>
+<li>ãã®ä»– : <%=h line %></li>
 %   end
 %  end
 </ul></tr>
 % end
 % unless @ref.portinf.empty?
-<tr><td nowrap>ˆÚA‚Ìƒqƒ“ƒg<td><%= html_enc_spider(@ref.portinf, true)%></tr>
+<tr><td nowrap>ç§»æ¤ã®ãƒ’ãƒ³ãƒˆ<td><%= html_enc_spider(@ref.portinf, true)%></tr>
 % end
 % path = @ref.path.gsub("\\", "/")
 % if File.dirname(path).downcase == 'common'
-<tr><td>ƒwƒbƒ_ƒtƒ@ƒCƒ‹<td><a href="<%= h(@urimapper.uri + path) %>"><%= ex_html_enc(@ref.path) %></a></tr>
+<tr><td>ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«<td><a href="<%= h(@urimapper.uri + path) %>"><%= ex_html_enc(@ref.path) %></a></tr>
 % else
-<tr><td>hs ƒtƒ@ƒCƒ‹<td><a href="<%= h(@urimapper.uri + path) %>"><%= ex_html_enc(@ref.path) %></a></tr>
+<tr><td>hs ãƒ•ã‚¡ã‚¤ãƒ«<td><a href="<%= h(@urimapper.uri + path) %>"><%= ex_html_enc(@ref.path) %></a></tr>
 % end
 </table></div>
 <%= foot() %>

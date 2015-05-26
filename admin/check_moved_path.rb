@@ -1,6 +1,6 @@
-#!/usr/bin/env ruby -Ks
+#!/usr/bin/env ruby
 
-# Moved ƒe[ƒuƒ‹‚É‘¶İ‚·‚éVƒpƒX‚ª not found ‚É‚È‚ç‚È‚¢‚©ƒ`ƒFƒbƒN
+# Moved ãƒ†ãƒ¼ãƒ–ãƒ«ã«å­˜åœ¨ã™ã‚‹æ–°ãƒ‘ã‚¹ãŒ not found ã«ãªã‚‰ãªã„ã‹ãƒã‚§ãƒƒã‚¯
 
 require 'pathname'
 require 'uri'

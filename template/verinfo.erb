@@ -9,22 +9,22 @@
 powered by SQLite <%=h @db.sqlite_version() %> / Ruby <%=h RUBY_VERSION %>
 </p>
 %# <p>Web : <a href="http://sprocket.babyblue.jp/">http://sprocket.babyblue.jp/</a></p>
-<h2>Online HSP Document Library‚É‚Â‚¢‚Ä</h2>
-<p>Online HSP Document Library‚Í<a href="http://sprocket.babyblue.jp/html/dlpage.htm#hdl">HSP Document Library(HDL)</a>‚ÌCGI‚Ö‚ÌˆÚA‚Å‚·BHDL‚ÌHTMLo—Í•”•ª‚ðˆÚA‚µAƒf[ƒ^ƒx[ƒX‚ÍHDL‚É‚æ‚èì‚ç‚ê‚½‚à‚Ì‚ð—¬—p‚µ‚Ä‚¢‚Ü‚·B</p>
-<p>ƒhƒLƒ…ƒƒ“ƒg‚ÍHSP3.2b3‚ðŽg—p‚µ‚Ä‚¢‚Ü‚·B</p>
-<h2>ƒ‰ƒCƒuƒ‰ƒŠ‚É‚Â‚¢‚Ä</h2>
-<p>‚±‚ÌƒvƒƒOƒ‰ƒ€‚ÍAƒhƒLƒ…ƒƒ“ƒgƒtƒ@ƒCƒ‹‚ðƒf[ƒ^ƒx[ƒX‰»‚µ‚ÄAŒø—¦“I‚ÉŒŸõ‚â‰{——‚ðs‚¤‚½‚ß‚Ìƒuƒ‰ƒEƒU‚Å‚·B</p>
-<p>ƒ‰ƒCƒuƒ‰ƒŠ‚Ìƒtƒ@ƒCƒ‹‚ÍAŽŸ‚ÌƒfƒBƒŒƒNƒgƒŠ‚©‚çŒŸõ‚³‚êAŠg’£Žq‚²‚Æ‚ÌƒZƒNƒVƒ‡ƒ“‚É‹æ•ª‚³‚ê‚Ü‚·B</p>
+<h2>Online HSP Document Libraryã«ã¤ã„ã¦</h2>
+<p>Online HSP Document Libraryã¯<a href="http://sprocket.babyblue.jp/html/dlpage.htm#hdl">HSP Document Library(HDL)</a>ã®CGIã¸ã®ç§»æ¤ã§ã™ã€‚HDLã®HTMLå‡ºåŠ›éƒ¨åˆ†ã‚’ç§»æ¤ã—ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¯HDLã«ã‚ˆã‚Šä½œã‚‰ã‚ŒãŸã‚‚ã®ã‚’æµç”¨ã—ã¦ã„ã¾ã™ã€‚</p>
+<p>ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯HSP3.2b3ã‚’ä½¿ç”¨ã—ã¦ã„ã¾ã™ã€‚</p>
+<h2>ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«ã¤ã„ã¦</h2>
+<p>ã“ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯ã€ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹åŒ–ã—ã¦ã€åŠ¹çŽ‡çš„ã«æ¤œç´¢ã‚„é–²è¦§ã‚’è¡Œã†ãŸã‚ã®ãƒ–ãƒ©ã‚¦ã‚¶ã§ã™ã€‚</p>
+<p>ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€æ¬¡ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‹ã‚‰æ¤œç´¢ã•ã‚Œã€æ‹¡å¼µå­ã”ã¨ã®ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã«åŒºåˆ†ã•ã‚Œã¾ã™ã€‚</p>
 <div class='para'><table class="verinf">
-<tr><th rowspan="2">ƒfƒBƒŒƒNƒgƒŠ<th rowspan="2">—p“r<th colspan="3">ŒŸõ‚³‚ê‚éŠg’£Žq / ‘ÎÛƒZƒNƒVƒ‡ƒ“</tr>
-<tr><th><a href="<%=h @urimapper.refcat() %>">ƒŠƒtƒ@ƒŒƒ“ƒX</a><th><a href="<%=h @urimapper.doccat() %>">ƒhƒLƒ…ƒƒ“ƒg</a><th><a href="<%=h @urimapper.samcat() %>">ƒTƒ“ƒvƒ‹</a></tr>
-<tr><td>./doclib<td>ƒhƒLƒ…ƒƒ“ƒg<td align="center">*.hs<td align="center">*.htm *.html *.txt<td align="center">*.hsp</tr>
-<tr><td>./common<td>ƒwƒbƒ_<td align="center">*.as *.hsp<td align="center">-<td align="center">-</tr>
-<tr class="grayout"><td>./hsphelp<td rowspan="3">ŒÝŠ·—p<td align="center">*.hs<td align="center">-<td align="center">-</tr>
+<tr><th rowspan="2">ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª<th rowspan="2">ç”¨é€”<th colspan="3">æ¤œç´¢ã•ã‚Œã‚‹æ‹¡å¼µå­ / å¯¾è±¡ã‚»ã‚¯ã‚·ãƒ§ãƒ³</tr>
+<tr><th><a href="<%=h @urimapper.refcat() %>">ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a><th><a href="<%=h @urimapper.doccat() %>">ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ</a><th><a href="<%=h @urimapper.samcat() %>">ã‚µãƒ³ãƒ—ãƒ«</a></tr>
+<tr><td>./doclib<td>ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ<td align="center">*.hs<td align="center">*.htm *.html *.txt<td align="center">*.hsp</tr>
+<tr><td>./common<td>ãƒ˜ãƒƒãƒ€<td align="center">*.as *.hsp<td align="center">-<td align="center">-</tr>
+<tr class="grayout"><td>./hsphelp<td rowspan="3">äº’æ›ç”¨<td align="center">*.hs<td align="center">-<td align="center">-</tr>
 <tr class="grayout"><td>./docs<td align="center">-<td align="center">*.htm *.html *.txt<td align="center">-</tr>
 <tr class="grayout"><td>./sample<td align="center">-<td align="center">-<td align="center">*.hsp</tr>
 </table></div>
-<p>ƒ‚ƒWƒ…[ƒ‹—Þ‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚ðV‚½‚É’Ç‰Á‚·‚éê‡‚ÍAdoclib ƒfƒBƒŒƒNƒgƒŠ‰º‚Éƒ‚ƒWƒ…[ƒ‹–¼‚ÌƒfƒBƒŒƒNƒgƒŠ‚ðì¬‚µA‚»‚Ì’†‚ÉŠÖ˜Aƒtƒ@ƒCƒ‹ (.hs .txt .htm .hsp) ‚ð‚Ü‚Æ‚ß‚Ä“ü‚ê‚é‚ÆŠÇ—‚µ‚â‚·‚­‚È‚è‚Ü‚·B</p>
-<p>common ƒfƒBƒŒƒNƒgƒŠ‚©‚ç‚ÍAƒhƒLƒ…ƒƒ“ƒg•t‚¯‚³‚ê‚½ƒwƒbƒ_ƒtƒ@ƒCƒ‹ (hs Œ`Ž®‚Ìƒwƒ‹ƒvî•ñ‚ð“à‘ ‚µ‚½ HSP ƒwƒbƒ_ƒtƒ@ƒCƒ‹) ‚ªŒŸõ‚³‚ê‚Ü‚·B</p>
+<p>ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«é¡žã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’æ–°ãŸã«è¿½åŠ ã™ã‚‹å ´åˆã¯ã€doclib ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªä¸‹ã«ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ä½œæˆã—ã€ãã®ä¸­ã«é–¢é€£ãƒ•ã‚¡ã‚¤ãƒ« (.hs .txt .htm .hsp) ã‚’ã¾ã¨ã‚ã¦å…¥ã‚Œã‚‹ã¨ç®¡ç†ã—ã‚„ã™ããªã‚Šã¾ã™ã€‚</p>
+<p>common ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‹ã‚‰ã¯ã€ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä»˜ã‘ã•ã‚ŒãŸãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ« (hs å½¢å¼ã®ãƒ˜ãƒ«ãƒ—æƒ…å ±ã‚’å†…è”µã—ãŸ HSP ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«) ãŒæ¤œç´¢ã•ã‚Œã¾ã™ã€‚</p>
 
 <%= foot() %>

@@ -1,6 +1,6 @@
 #!/usr/local/bin/ruby -Ks
 
-# 過去の URI からのリダイレクトを行う
+# 驕主悉縺ｮ URI 縺九ｉ縺ｮ繝ｪ繝繧､繝ｬ繧ｯ繝医ｒ陦後≧
 
 require 'ohdl/config'
 require 'ohdl/application'

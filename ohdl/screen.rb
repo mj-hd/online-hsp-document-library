@@ -207,9 +207,9 @@ module OHDL
     Params = Struct.new(:urimapper, :db, :template_repository, :cache)
     
     if false
-    # ERB#def_method ‚ğg‚Á‚ÄƒLƒƒƒbƒVƒ…‚µAERBƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ñ‚ÅRubyƒvƒƒOƒ‰ƒ€‚É•ÏŠ·‚µ‚Äƒp[ƒX‚·‚é‚Ì‚ğÈ‚­
-    # create_cache.cgi ‚Åg‚Á‚½‚çƒLƒƒƒbƒVƒ…‚Ì¶¬‚ª‘¬‚­‚È‚é‚©‚Æv‚Á‚½‚ç‚ ‚Ü‚èŒø‰Ê‚È‚µ
-    # ‚»‚ê‚É template_repository ‚ªŒˆ‚ß‚¤‚¿‚É‚È‚Á‚Ä‚µ‚Ü‚¤‚Ì‚à‚æ‚­‚È‚¢B
+    # ERB#def_method ã‚’ä½¿ã£ã¦ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã€ERBãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§Rubyãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«å¤‰æ›ã—ã¦ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã®ã‚’çœã
+    # create_cache.cgi ã§ä½¿ã£ãŸã‚‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ç”ŸæˆãŒé€Ÿããªã‚‹ã‹ã¨æ€ã£ãŸã‚‰ã‚ã¾ã‚ŠåŠ¹æœãªã—
+    # ãã‚Œã« template_repository ãŒæ±ºã‚ã†ã¡ã«ãªã£ã¦ã—ã¾ã†ã®ã‚‚ã‚ˆããªã„ã€‚
     def add_template_cache
       def_template_method TemplateScreen, 'head(title, navi)', 'head'
       def_template_method TemplateScreen, 'foot', 'foot'
@@ -241,7 +241,7 @@ module OHDL
     include ERB::Util
     
     def http_response_header_options
-      {'charset' => 'Shift_JIS', 'language' => 'ja', }
+      {'charset' => 'UTF-8', 'language' => 'ja', }
     end
   end
   
@@ -255,10 +255,10 @@ module OHDL
     end
     
     ENVSTR = {
-      'Win' => 'Windows ”Å HSP',
-      'Mac' => 'Macintosh ”Å HSP',
+      'Win' => 'Windows ç‰ˆ HSP',
+      'Mac' => 'Macintosh ç‰ˆ HSP',
       'Let' => 'HSPLet',
-      'Cli' => 'ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“”Å HSP',
+      'Cli' => 'ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ç‰ˆ HSP',
     }
     
     private
@@ -291,8 +291,8 @@ module OHDL
       'X%08X' % (a&0xffffffff)
     end
     
-    # ƒeƒLƒXƒg ¨ ƒnƒCƒp[ƒeƒLƒXƒg •ÏŠ· text, br-mode
-    # (HTML Enc & ƒVƒ“ƒ{ƒ‹ ƒI[ƒgƒŠƒ“ƒN & URL ƒI[ƒgƒŠƒ“ƒN)
+    # ãƒ†ã‚­ã‚¹ãƒˆ â†’ ãƒã‚¤ãƒ‘ãƒ¼ãƒ†ã‚­ã‚¹ãƒˆ å¤‰æ› text, br-mode
+    # (HTML Enc & ã‚·ãƒ³ãƒœãƒ« ã‚ªãƒ¼ãƒˆãƒªãƒ³ã‚¯ & URL ã‚ªãƒ¼ãƒˆãƒªãƒ³ã‚¯)
     def html_enc_spider(src, brmode = false)
       @db.create_ref_name_cache
       scanner = StringScanner.new(src)
@@ -347,7 +347,7 @@ module OHDL
             m
           end
         end
-      else # ƒ{ƒgƒ‹ƒlƒbƒN‚Ì‚½‚ßÅ“K‰»
+      else # ãƒœãƒˆãƒ«ãƒãƒƒã‚¯ã®ãŸã‚æœ€é©åŒ–
         [['<', '<body'], ['<!--', '-->'],
          ['<style>', '</style>'], ['<script', '</script>']].each do |a, b|
           loop do 
@@ -370,8 +370,8 @@ module OHDL
       while sp = src.index(re, sp)
         gt = src.rindex(?>, sp-1)
         lt = src.rindex(?<, sp-1)
-        if gt && lt ? gt > lt : !lt # –{•¶’†iƒ^ƒO‚Ì’†‚Å‚È‚¢j
-          if not /&[^;]*\z/n.match(src[[sp-9, gt||0].max...sp]) # •¶šQÆ‚Ì’†‚Å‚È‚¢
+        if gt && lt ? gt > lt : !lt # æœ¬æ–‡ä¸­ï¼ˆã‚¿ã‚°ã®ä¸­ã§ãªã„ï¼‰
+          if not /&[^;]*\z/n.match(src[[sp-9, gt||0].max...sp]) # æ–‡å­—å‚ç…§ã®ä¸­ã§ãªã„
             dest << str[cp...sp] << '<span class="kwd">' << str[sp, keyword.size] << '</span>'
             cp = sp + keyword.size
           end
@@ -389,7 +389,7 @@ module OHDL
       str
     end
     
-    # HTML ’†‚ÌƒAƒNƒeƒBƒuƒXƒNƒŠƒvƒg‚ÉŠÖ‚·‚éƒL[ƒ[ƒh‚ğ‹Ö~
+    # HTML ä¸­ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚¹ã‚¯ãƒªãƒ—ãƒˆã«é–¢ã™ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ç¦æ­¢
     def doubt_angel(src)
       src.gsub(/<script|<iframe|<applet|<meta|<embed|<object|
       javascript:|vbscript:|onunload|onsubmit|onstop|onstart|onselectstart|
@@ -411,7 +411,7 @@ module OHDL
       end
     end
     
-    # •¶š—ñ’·‚³§ŒÀ..
+    # æ–‡å­—åˆ—é•·ã•åˆ¶é™..
     def left_html_enc(src, width)
       if src.size <= width
         return html_escape(src)
@@ -431,9 +431,9 @@ module OHDL
     def catego_disp(str, mode = nil)
       return str unless str.empty?
       if mode == ?R
-        '•W€‹@”\'
+        'æ¨™æº–æ©Ÿèƒ½'
       else
-        '•W€ƒJƒeƒSƒŠ'
+        'æ¨™æº–ã‚«ãƒ†ã‚´ãƒª'
       end
     end
     
@@ -442,7 +442,7 @@ module OHDL
     end
     
     def grp_disp(str)
-      str.empty? ? '(ƒOƒ‹[ƒv–¢’è‹`)' : str
+      str.empty? ? '(ã‚°ãƒ«ãƒ¼ãƒ—æœªå®šç¾©)' : str
     end
     
     def null_cvt(str)
@@ -450,18 +450,18 @@ module OHDL
     end
     
     def cats_ref
-      "ƒŠƒtƒ@ƒŒƒ“ƒX <small>#{h @db.refcats.size}</small>"
+      "ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ <small>#{h @db.refcats.size}</small>"
     end
     
     def cats_doc
-      "ƒhƒLƒ…ƒƒ“ƒg <small>#{h @db.doccats.size}</small>"
+      "ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ <small>#{h @db.doccats.size}</small>"
     end
     
     def cats_sample
-      "ƒTƒ“ƒvƒ‹ <small>#{h @db.samcats.size}</small>"
+      "ã‚µãƒ³ãƒ—ãƒ« <small>#{h @db.samcats.size}</small>"
     end
     
-    #  ƒCƒ“ƒ‰ƒCƒ“ HTML ‹Lq‚ÌƒTƒ|[ƒg ( html{ ... }html )
+    #  ã‚¤ãƒ³ãƒ©ã‚¤ãƒ³ HTML è¨˜è¿°ã®ã‚µãƒãƒ¼ãƒˆ ( html{ ... }html )
     def inline_html(inst)
       pos = 0
       dest = ''
@@ -578,7 +578,7 @@ module OHDL
     def omit_inst(ref)
       s = ref.inst.gsub('---', '')[/\A.{0,150}/m] + '..'
       len = s.index(/html\{/n) || s.size
-      omit_sentence(s, len, ["B", "\n", " "], 10)
+      omit_sentence(s, len, ["ã€‚", "\n", " "], 10)
     end
   end
   
@@ -591,7 +591,7 @@ module OHDL
     private
     def omit_content(doc)
       s = doc.summary(250)
-      omit_sentence(s, s.size, ["B", ". ", " "], 10)
+      omit_sentence(s, s.size, ["ã€‚", ". ", " "], 10)
     end
     
     def body0(mode, secname, cats)
@@ -720,9 +720,9 @@ module OHDL
     end
     
     def each_section(&block)
-      [[?R, 'ƒŠƒtƒ@ƒŒƒ“ƒX', @db.refcats, @db.refs],
-       [?D, 'ƒhƒLƒ…ƒƒ“ƒg', @db.doccats, @db.docs],
-       [?S, 'ƒTƒ“ƒvƒ‹',     @db.samcats, @db.samples]].each(&block)
+      [[?R, 'ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹', @db.refcats, @db.refs],
+       [?D, 'ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ', @db.doccats, @db.docs],
+       [?S, 'ã‚µãƒ³ãƒ—ãƒ«',     @db.samcats, @db.samples]].each(&block)
     end
     
     def doc_summary(doc)
@@ -739,7 +739,7 @@ module OHDL
     
     def body
       @cache.read_opensearch {|r| return r }
-      run_template('opensearch').kconv(Kconv::UTF8, Kconv::SJIS)
+      run_template('opensearch')
     end
   end
   

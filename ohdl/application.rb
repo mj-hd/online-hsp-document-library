@@ -95,7 +95,7 @@ module OHDL
       params = CGI.parse(uri.query || '')
       cmd, arg = parse_request(uri.path, params, uri.query)
       if doc and doc.sample? and cmd == 'rid'
-        # リファレンスのサンプル逆引き
+        # 繝ｪ繝輔ぃ繝ｬ繝ｳ繧ｹ縺ｮ繧ｵ繝ｳ繝励Ν騾�蠑輔″
         return arg.name
       end
       return nil unless cmd == 'search' or cmd == 'menu'

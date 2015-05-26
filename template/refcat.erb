@@ -3,14 +3,14 @@
 %>
 
 
-% # ƒZƒNƒVƒ‡ƒ“ƒZƒŒƒNƒ^
+% # ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚»ãƒ¬ã‚¯ã‚¿
 <div class="cmenu">
 <span class="citemb"><%= cats_ref() %></span>
 <a class="citem" href="<%=h @urimapper.doccat() %>"><%= cats_doc() %></a>
 <a class="citem" href="<%=h @urimapper.samcat() %>"><%= cats_sample() %></a>
 <div style="clear:both;"></div>
 
-% # ƒvƒ‰ƒOƒCƒ“ / ƒ‚ƒWƒ…[ƒ‹ ƒZƒŒƒNƒ^
+% # ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ / ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ« ã‚»ãƒ¬ã‚¯ã‚¿
 % @db.refcats.each do |cat|
 %  if cat.name == @category.name
 <span class="citemb"><%=h dll_disp(cat.name) %>&nbsp;<small><%=h cat.size %></small></span>
@@ -23,7 +23,7 @@
 
 % # content
 <h1><%=h dll_disp(@category.name) %></h1>
-% # ƒo[ƒWƒ‡ƒ“ “ú•t ’˜ìÒ
+% # ãƒãƒ¼ã‚¸ãƒ§ãƒ³ æ—¥ä»˜ è‘—ä½œè€…
 % @category.metadata.each do |ver, date, author|
 <div class="itemsub">
 <% unless ver.empty? then %> Version <%=h ver %><% end %>
@@ -32,16 +32,16 @@
 </div>
 % end
 
-% # –ÚŸ
+% # ç›®æ¬¡
 % groups = @category.groups
 % if groups.size >= 2
-<h2>–ÚŸ <small>(<%=h groups.size %> ƒOƒ‹[ƒv / <%=h @category.size %> ƒy[ƒW)</small></h2>
+<h2>ç›®æ¬¡ <small>(<%=h groups.size %> ã‚°ãƒ«ãƒ¼ãƒ— / <%=h @category.size %> ãƒšãƒ¼ã‚¸)</small></h2>
 %  groups.each do |grpname, size|
 <div class="itemidx"><a href="#<%=h strhash(grp_disp(grpname)) %>"><%=h grp_disp(grpname) %> <small><%=h size %></small></a></div>
 %  end
 % end
 
-% # ƒJƒ^ƒƒO ƒƒCƒ“
+% # ã‚«ã‚¿ãƒ­ã‚° ãƒ¡ã‚¤ãƒ³
 % diff = nil
 % @category.each do |ref|
 %  if diff != ref.group

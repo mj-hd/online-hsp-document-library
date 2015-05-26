@@ -2,7 +2,7 @@
 
 /* body */
 body {
-	/* ƒy[ƒW‘S‘Ì‚ÌƒtƒHƒ“ƒgİ’è */
+	/* ãƒšãƒ¼ã‚¸å…¨ä½“ã®ãƒ•ã‚©ãƒ³ãƒˆè¨­å®š */
 	font: 95% 'Arial';
 
 	background: #fff;
@@ -130,7 +130,7 @@ a.find {
 
 /* paragraph */
 pre {
-	font-family: "‚l‚r ƒSƒVƒbƒN";
+	font-family: "ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯";
 }
 p,
 pre.para,
@@ -140,12 +140,12 @@ div.para {
 	line-height: 133%;
 }
 p.summary {
-	/* ƒTƒ}ƒŠ[ */
+	/* ã‚µãƒãƒªãƒ¼ */
 	color: #446;
 	font-weight: bold;
 }
 p.location {
-	/* ƒƒP[ƒVƒ‡ƒ“•\¦ */
+	/* ãƒ­ã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¡¨ç¤º */
 	font-weight: bold;
 	margin: 0;
 	padding: 4px 20px;
@@ -157,7 +157,7 @@ p.location {
 	border-width: 0 0 1px 0;
 }
 pre.para {
-	/* pre ‚Å©“®Ü‚è•Ô‚µ */
+	/* pre ã§è‡ªå‹•æŠ˜ã‚Šè¿”ã— */
 	word-wrap: break-word;
 	white-space: -moz-pre-wrap; /* Mozilla */
 	white-space: pre-wrap; /* CSS3 */
@@ -174,12 +174,12 @@ pre.script {
 
 /* symbol */
 span.symbol {
-	/* ƒVƒ“ƒ{ƒ‹ */
+	/* ã‚·ãƒ³ãƒœãƒ« */
 	color: #00c;
 	font-weight: bold;
 }
 span.arg {
-	/* ˆø” */
+	/* å¼•æ•° */
 	color: #060;
 	font-weight: bold;
 }

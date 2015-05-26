@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby -Ks
+#!/usr/local/bin/ruby
 require 'pathname'
 require 'uri'
 require 'cgi'
@@ -12,16 +12,16 @@ require 'ohdl/database'
 
 @all_targets = %w(home frameset verinfo menu opensearch refs docsams refcats doccats samcats function_list_js)
 @targets_map = {
-  'home' => 'ƒz[ƒ€',
-  'frameset' => 'ƒtƒŒ[ƒ€ƒZƒbƒg',
-  'verinfo' => 'ƒo[ƒWƒ‡ƒ“î•ñ',
-  'menu' => 'ƒƒjƒ…[',
+  'home' => 'ãƒ›ãƒ¼ãƒ ',
+  'frameset' => 'ãƒ•ãƒ¬ãƒ¼ãƒ ã‚»ãƒƒãƒˆ',
+  'verinfo' => 'ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±',
+  'menu' => 'ãƒ¡ãƒ‹ãƒ¥ãƒ¼',
   'opensearch' => 'OpenSearch',
-  'refs' => 'ƒŠƒtƒ@ƒŒƒ“ƒX',
-  'docsams' => 'ƒhƒLƒ…ƒƒ“ƒgEƒTƒ“ƒvƒ‹',
-  'refcats' => 'ƒŠƒtƒ@ƒŒƒ“ƒXƒJƒ^ƒƒO',
-  'doccats' => 'ƒhƒLƒ…ƒƒ“ƒgƒJƒ^ƒƒO',
-  'samcats' => 'ƒTƒ“ƒvƒ‹ƒJƒ^ƒƒO',
+  'refs' => 'ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹',
+  'docsams' => 'ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ»ã‚µãƒ³ãƒ—ãƒ«',
+  'refcats' => 'ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã‚«ã‚¿ãƒ­ã‚°',
+  'doccats' => 'ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚«ã‚¿ãƒ­ã‚°',
+  'samcats' => 'ã‚µãƒ³ãƒ—ãƒ«ã‚«ã‚¿ãƒ­ã‚°',
   'function_list_js' => 'function_list.js',
 }
 
@@ -40,30 +40,30 @@ def output(targets, start_time, end_time)
   s.puts "<title>OHDL #{CGI.escapeHTML(File.basename($0))}</title>"
   s.puts "<h1>OHDL #{CGI.escapeHTML(File.basename($0))}</h1>"
   if targets.length > 0
-    s.puts "<p>ˆÈ‰º‚ÌƒLƒƒƒbƒVƒ…‚ğì¬‚µ‚Ü‚µ‚½</p>"
+    s.puts "<p>ä»¥ä¸‹ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ä½œæˆã—ã¾ã—ãŸ</p>"
     s.puts "<ul>"
     targets.each do |t|
       s.puts "<li>#{CGI.escapeHTML(@targets_map[t])}</li>"
     end
     s.puts "</ul>"
-    s.puts "ŠJn: #{CGI.escapeHTML(start_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
-    s.puts "<p>I—¹: #{CGI.escapeHTML(end_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
-    s.puts "<p>ÀsŠÔ: #{CGI.escapeHTML((end_time - start_time).to_s)} sec</p>"
+    s.puts "é–‹å§‹æ™‚åˆ»: #{CGI.escapeHTML(start_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
+    s.puts "<p>çµ‚äº†æ™‚åˆ»: #{CGI.escapeHTML(end_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
+    s.puts "<p>å®Ÿè¡Œæ™‚é–“: #{CGI.escapeHTML((end_time - start_time).to_s)} sec</p>"
   else
-    s.puts '<p>create_cache_simple.cgi ‚Å‚Íˆê‰ñ‚ÌƒŠƒNƒGƒXƒg‚Å‘S‚Ä‚ÌƒLƒƒƒbƒVƒ…‚Ìì¬‚ğÏ‚Ü‚¹‚Ü‚·B<a href="create_cache.cgi">create_cache.cgi</a>‚ÍƒŠƒNƒGƒXƒg‚ğ‰½‰ñ‚©‚É•ª‚¯‚Ä“r’†Œo‰ß‚ğ•\¦‚·‚éƒo[ƒWƒ‡ƒ“‚Å‚·B</p>'
+    s.puts '<p>create_cache_simple.cgi ã§ã¯ä¸€å›ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã§å…¨ã¦ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ä½œæˆã‚’æ¸ˆã¾ã›ã¾ã™ã€‚<a href="create_cache.cgi">create_cache.cgi</a>ã¯ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä½•å›ã‹ã«åˆ†ã‘ã¦é€”ä¸­çµŒéã‚’è¡¨ç¤ºã™ã‚‹ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã™ã€‚</p>'
   end
   s.puts '<form method="post" action="">'
   s.puts '<fieldset>'
-  s.puts '<legend>ƒLƒƒƒbƒVƒ…ì¬</legend>'
+  s.puts '<legend>ã‚­ãƒ£ãƒƒã‚·ãƒ¥ä½œæˆ</legend>'
   s.puts '<input type="hidden" name="exc" value="1">'
   s.puts '<ul>'
-  s.puts '<li><label><input type="checkbox" name="target" value="all">‘S‚Ä</label></li>'
+  s.puts '<li><label><input type="checkbox" name="target" value="all">å…¨ã¦</label></li>'
   @all_targets.each do |t|
     s.print %Q!<li><label><input type="checkbox" name="target" value="#{CGI.escapeHTML(t)}"!
     s.print ' checked' if targets.include?(t)
     s.puts ">#{CGI.escapeHTML(@targets_map[t])}</label></li>"
   end
-  s.puts '<p><input type="submit" value="ì¬"></p>'
+  s.puts '<p><input type="submit" value="ä½œæˆ"></p>'
   s.puts '</fieldset>'
   s.puts '</form>'
   s.string
@@ -86,7 +86,7 @@ begin
     end
     end_time = Time.now
   end
-  cgi.out('charset' => 'Shift_JIS', 'language' => 'ja') do
+  cgi.out('charset' => 'UTF-8', 'language' => 'ja') do
     output(targets, start_time, end_time)
   end
 rescue Exception => e

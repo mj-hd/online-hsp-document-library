@@ -32,7 +32,7 @@ module OHDL
       end
     end
     
-    # ƒŠƒtƒ@ƒŒƒ“ƒX‚©‚ç—‚½–¼‘O‚Ì€–Ú‚ğ’T‚·
+    # ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã‹ã‚‰ä¼¼ãŸåå‰ã®é …ç›®ã‚’æ¢ã™
     def mosikasite(name)
       len = name.length
       return [] unless len >= 3 and /\A[\x00-\x7f]+\z/n.match(name)
@@ -170,7 +170,7 @@ module OHDL
         row = @sqdb.get_first_row("SELECT Catego, count(ID) FROM Docs WHERE Type#{hspoper}'hsp' " \
                                   'AND Catego=? GROUP BY Catego', name)
         if name.empty? and row.nil?
-          # •W€ƒJƒeƒSƒŠ‚ª‚È‚¢ê‡ : ƒtƒ@[ƒXƒgƒJƒeƒSƒŠ‘I‘ğ
+          # æ¨™æº–ã‚«ãƒ†ã‚´ãƒªãŒãªã„å ´åˆ : ãƒ•ã‚¡ãƒ¼ã‚¹ãƒˆã‚«ãƒ†ã‚´ãƒªé¸æŠ
           row = @sqdb.get_first_row("SELECT Catego, count(ID) FROM Docs WHERE Type#{hspoper}'hsp' " \
                                     'GROUP BY Catego ORDER BY lower(Catego) LIMIT 1')
         end
@@ -322,10 +322,10 @@ module OHDL
             word[0,1] = ''
           end
           whereq << '('
-          # ’PƒŒŸõ
+          # å˜ç´”æ¤œç´¢
           whereq << target << ' LIKE ?'
           binds << "%#{word}%"
-          if (word[0] || 0) <= ?z # ‰p’PŒêŒŸõ
+          if (word[0] || 0) <= ?z # è‹±å˜èªæ¤œç´¢
             whereq << " AND lower(' '||#{target}||' ') GLOB lower(?)"
             binds << "*[^a-z]#{word}*"
           end
@@ -563,7 +563,7 @@ module OHDL
       end
     end
 
-    # SQL‚Æ‚Ì“üo—Í‚É SJIS <-> UTF8 ‚ğ©“®“I‚É•ÏŠ·
+    # SQLã¨ã®å…¥å‡ºåŠ›æ™‚ã« SJIS <-> UTF8 ã‚’è‡ªå‹•çš„ã«å¤‰æ›
     class MyDriver < SQLite3::Driver::Native::Driver
       def bind_text(stmt, index, value, utf16 = false)
         super(stmt, index, value.to_s.kconv(Kconv::UTF8, Kconv::SJIS), utf16)

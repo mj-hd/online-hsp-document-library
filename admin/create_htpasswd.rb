@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby -Ks
+#!/usr/local/bin/ruby
 
 print 'account name: '
 account_name = $stdin.gets.chomp

@@ -1,4 +1,4 @@
-AddType "text/html; charset=Shift_JIS" html htm
+AddType "text/html; charset=UTF-8" html htm
 
 <IfModule mod_rewrite.c>
 RewriteEngine On

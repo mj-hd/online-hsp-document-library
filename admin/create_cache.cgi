@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby -Ks
+#!/usr/local/bin/ruby
 require 'pathname'
 require 'uri'
 require 'cgi'
@@ -12,16 +12,16 @@ require 'ohdl/database'
 
 @all_targets = %w(home frameset verinfo menu opensearch refs docsams refcats doccats samcats function_list_js)
 @targets_map = {
-  'home' => 'ƒz[ƒ€',
-  'frameset' => 'ƒtƒŒ[ƒ€ƒZƒbƒg',
-  'verinfo' => 'ƒo[ƒWƒ‡ƒ“î•ñ',
-  'menu' => 'ƒƒjƒ…[',
+  'home' => 'ãƒ›ãƒ¼ãƒ ',
+  'frameset' => 'ãƒ•ãƒ¬ãƒ¼ãƒ ã‚»ãƒƒãƒˆ',
+  'verinfo' => 'ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±',
+  'menu' => 'ãƒ¡ãƒ‹ãƒ¥ãƒ¼',
   'opensearch' => 'OpenSearch',
-  'refs' => 'ƒŠƒtƒ@ƒŒƒ“ƒX',
-  'docsams' => 'ƒhƒLƒ…ƒƒ“ƒgEƒTƒ“ƒvƒ‹',
-  'refcats' => 'ƒŠƒtƒ@ƒŒƒ“ƒXƒJƒ^ƒƒO',
-  'doccats' => 'ƒhƒLƒ…ƒƒ“ƒgƒJƒ^ƒƒO',
-  'samcats' => 'ƒTƒ“ƒvƒ‹ƒJƒ^ƒƒO',
+  'refs' => 'ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹',
+  'docsams' => 'ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ»ã‚µãƒ³ãƒ—ãƒ«',
+  'refcats' => 'ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ã‚«ã‚¿ãƒ­ã‚°',
+  'doccats' => 'ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚«ã‚¿ãƒ­ã‚°',
+  'samcats' => 'ã‚µãƒ³ãƒ—ãƒ«ã‚«ã‚¿ãƒ­ã‚°',
   'function_list_js' => 'function_list.js',
 }
 
@@ -133,8 +133,8 @@ def output(db, targets, step, offset, completed, start_time)
   
   s.puts "<title>OHDL #{h(File.basename($0))}</title>"
   s.puts "<h1>OHDL #{h(File.basename($0))}</h1>"
-  s.puts "<p>ƒLƒƒƒbƒVƒ…ì¬’†...</p>"
-  s.puts "<p>ƒLƒƒƒbƒVƒ…ì¬Ï‚İ:</p>"
+  s.puts "<p>ã‚­ãƒ£ãƒƒã‚·ãƒ¥ä½œæˆä¸­...</p>"
+  s.puts "<p>ã‚­ãƒ£ãƒƒã‚·ãƒ¥ä½œæˆæ¸ˆã¿:</p>"
   s.puts "<ul>"
   step.times do |i|
     s.puts "<li>#{h(@targets_map[targets[i]])}</li>"
@@ -146,18 +146,18 @@ def output(db, targets, step, offset, completed, start_time)
   s.puts "</ul>"
   not_completed_start = step + (offset > 0 ? 1 : 0)
   if not_completed_start < targets.size
-    s.puts '<p>ƒLƒƒƒbƒVƒ…‘Ò‚¿:</p>'
+    s.puts '<p>ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¾…ã¡:</p>'
     s.puts '<ul>'
     (not_completed_start...targets.size).each do |i|
       s.puts "<li>#{h(@targets_map[targets[i]])}</li>"
     end
     s.puts '</ul>'
   end
-  s.puts "ŠJn: #{h(start_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
+  s.puts "é–‹å§‹æ™‚åˆ»: #{h(start_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
   now_time = Time.now
-  s.puts "Œ»İ: #{h(now_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
-  s.puts "<p>ÀsŠÔ: #{h(now_time - start_time)} sec</p>"
-  s.puts %Q!<p><a href="#{h(File.basename($0))}">’†’f</a></p>!
+  s.puts "ç¾åœ¨æ™‚åˆ»: #{h(now_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
+  s.puts "<p>å®Ÿè¡Œæ™‚é–“: #{h(now_time - start_time)} sec</p>"
+  s.puts %Q!<p><a href="#{h(File.basename($0))}">ä¸­æ–­</a></p>!
   s.string
 end
 
@@ -168,14 +168,14 @@ def output_index(db)
   s.puts "<h1>OHDL #{h(File.basename($0))}</h1>"
   s.puts '<form method="get" action="">'
   s.puts '<fieldset>'
-  s.puts '<legend>ƒLƒƒƒbƒVƒ…ì¬</legend>'
+  s.puts '<legend>ã‚­ãƒ£ãƒƒã‚·ãƒ¥ä½œæˆ</legend>'
   s.puts '<input type="hidden" name="exc" value="1">'
   s.puts '<ul>'
-  s.puts '<li><label><input type="checkbox" name="target" value="all">‘S‚Ä</label></li>'
+  s.puts '<li><label><input type="checkbox" name="target" value="all">å…¨ã¦</label></li>'
   @all_targets.each do |t|
     s.print %Q!<li><label><input type="checkbox" name="target" value="#{h(t)}">#{h(@targets_map[t])}</label></li>!
   end
-  s.puts '<p><input type="submit" value="ì¬"></p>'
+  s.puts '<p><input type="submit" value="ä½œæˆ"></p>'
   s.puts '</fieldset>'
   s.puts '</form>'
   s.string
@@ -186,17 +186,17 @@ def output_completed(db, targets, start_time)
   s.puts '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">'
   s.puts "<title>OHDL #{h(File.basename($0))}</title>"
   s.puts "<h1>OHDL #{h(File.basename($0))}</h1>"
-  s.puts '<p>ƒLƒƒƒbƒVƒ…‚Ìì¬‚ªŠ®—¹‚µ‚Ü‚µ‚½</p>'
+  s.puts '<p>ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ä½œæˆãŒå®Œäº†ã—ã¾ã—ãŸ</p>'
   s.puts '<ul>'
   targets.each do |t|
     s.puts "<li>#{h(@targets_map[t])}</li>"
   end
   s.puts '</ul>'
-  s.puts "ŠJn: #{h(start_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
+  s.puts "é–‹å§‹æ™‚åˆ»: #{h(start_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
   end_time = Time.now
-  s.puts "I—¹: #{h(end_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
-  s.puts "<p>ÀsŠÔ: #{h(end_time - start_time)} sec</p>"
-  s.puts %Q!<p><a href="#{h(File.basename($0))}">–ß‚é</a></p>!
+  s.puts "çµ‚äº†æ™‚åˆ»: #{h(end_time.strftime("%Y/%m/%d %H:%M:%S"))}</p>"
+  s.puts "<p>å®Ÿè¡Œæ™‚é–“: #{h(end_time - start_time)} sec</p>"
+  s.puts %Q!<p><a href="#{h(File.basename($0))}">æˆ»ã‚‹</a></p>!
   s.string
 end
 
@@ -216,7 +216,7 @@ begin
   unless completed
     step, offset = start_cache(cache, db, targets, step, offset)
   end
-  cgi.out('charset' => 'Shift_JIS', 'language' => 'ja') do
+  cgi.out('charset' => 'UTF-8', 'language' => 'ja') do
     output(db, targets, step, offset, completed, start_time)
   end
 rescue Exception => e
