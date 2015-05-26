@@ -1,11 +1,21 @@
 require 'sqlite3'
-require 'sqlite3/driver/native/driver'
 require 'kconv'
 
 module OHDL
   class Database
     def initialize(file_name)
-      @sqdb = SQLite3::Database.new(file_name, :driver => MyDriver)
+      @sqdb = SQLite3::Database.new(file_name)
+
+      # SJISからUTF8への変換
+      @sqdb.type_translation = true
+      [nil, "text", "varchar"].each do |type|
+        @sqdb.translator.add_translator(type) do |t, v|
+          if v.class == String then
+            v.encode("UTF-8")
+          end
+        end
+      end
+
       @params = Params.new(self, @sqdb)
       
       @refcats = ReferenceCategoryContainer.new(@params)
@@ -560,17 +570,6 @@ module OHDL
       
       def category
         @db.samcats.find_by_name(catego())
-      end
-    end
-
-    # SQLとの入出力時に SJIS <-> UTF8 を自動的に変換
-    class MyDriver < SQLite3::Driver::Native::Driver
-      def bind_text(stmt, index, value, utf16 = false)
-        super(stmt, index, value.to_s.kconv(Kconv::UTF8, Kconv::SJIS), utf16)
-      end
-      
-      def column_text(*args)
-        super.kconv(Kconv::SJIS, Kconv::UTF8)
       end
     end
   end
