@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby -Ks
+#!/usr/bin/env ruby
 
 begin
   require './ohdl/config'

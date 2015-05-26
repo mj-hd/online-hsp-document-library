@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby -Ks
+#!/usr/bin/env ruby
 
 # 過去の URI からのリダイレクトを行う
 
