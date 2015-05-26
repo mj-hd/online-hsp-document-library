@@ -128,7 +128,7 @@ module OHDL
     
     private
     def encode_uri(str)
-      str.gsub(/[^\w\.\-]/n) {|ch| sprintf('%%%02X', ch[0].to_i) }
+      str.gsub(/[^\w\.\-]/) {|ch| sprintf('%%%02X', ch[0].to_i) }
     end
     
     def path2uri(path)
@@ -302,7 +302,7 @@ module OHDL
         case
         when brmode && scanner.scan(/\n/)
           dest << '<br>'
-        when scanner.scan(/(https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+/n)
+        when scanner.scan(/(https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+/)
           escaped_uri = html_escape(scanner.matched)
           dest << "<a href=\"#{escaped_uri}\" target=\"_top\">#{escaped_uri}</a>"
         when scanner.scan(/[A-Za-z0-9_#%$.]{2,40}/)
@@ -515,7 +515,7 @@ module OHDL
       realpath = File.expand_path(path.gsub('\\','/'))
       return nil unless realpath.index(Dir.pwd) == 0
       begin
-        File.read(realpath, encoding: "UTF-8")
+        File.read(realpath, encoding: "CP932").encode("UTF-8")
       rescue SystemCallError
         nil
       end
@@ -577,7 +577,7 @@ module OHDL
     private
     def omit_inst(ref)
       s = ref.inst.gsub('---', '')[/\A.{0,150}/m] + '..'
-      len = s.index(/html\{/n) || s.size
+      len = s.index(/html\{/) || s.size
       omit_sentence(s, len, ["。", "\n", " "], 10)
     end
   end
