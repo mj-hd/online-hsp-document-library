@@ -92,7 +92,7 @@ begin
 rescue Exception => e
   puts 'Content-Type: text/plain'
   puts
-  p e
+  p e.to_s
   puts e.backtrace
 ensure
   db.close if db

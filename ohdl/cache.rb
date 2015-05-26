@@ -22,7 +22,7 @@ module OHDL
       if s == ''
         '%5fempty'
       else
-        s.gsub(/[^\w\-]/n) {|ch| sprintf('%%%02X', ch[0]) }
+        s.gsub(/[^\w\-]/n) {|ch| sprintf('%%%02X', ch[0].to_i) }
       end
     end
   end
