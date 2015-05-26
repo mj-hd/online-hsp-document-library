@@ -17,8 +17,8 @@ def main
   add_path 'sample/basic/modtest2.hsp', 'sample/module/modtest2.hsp'
   add_path 'sample/basic/modtest3.hsp', 'sample/module/modtest3.hsp'
   add_path 'sample/basic/modtest4.hsp', 'sample/module/modtest4.hsp'
-  add_path 'sample/easy3d/e3dhsp3_alpha.hsp', 'sample/Easy3D/e3dhsp3_alpha2.hsp'
-  add_path 'sample/easy3d/e3dhsp3_texturechange.hsp', 'sample/Easy3D/e3dhsp3_TextureChange2.hsp'
+  #add_path 'sample/easy3d/e3dhsp3_alpha.hsp', 'sample/Easy3D/e3dhsp3_alpha2.hsp'
+  #add_path 'sample/easy3d/e3dhsp3_texturechange.hsp', 'sample/Easy3D/e3dhsp3_TextureChange2.hsp'
   add_path 'sample/game/bom.bmp', 'sample/module/bom.bmp'
   add_path 'sample/game/bom.wav', 'sample/module/bom.wav'
   add_path 'sample/game/defcfunc.hsp', 'sample/module/defcfunc.hsp'
@@ -53,7 +53,7 @@ def main
   add_path 'sample/new/web.hsp', 'sample/comobj/web.hsp'
   add_path 'sample/new/winmove.hsp', 'sample/misc/winmove.hsp'
   add_path 'sample/new/winobj.hsp', 'sample/misc/winobj.hsp'
-  add_refcat 'Easy3D(HSP3)', 'Easy3D For HSP3'
+  #add_refcat 'Easy3D(HSP3)', 'Easy3D For HSP3'
   
   add_path 'opensearch.xml', 'opensearch/'
 end
