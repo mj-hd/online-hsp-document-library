@@ -1,3 +1,4 @@
+# coding: utf-8
 require './ohdl/cache'
 require 'erb'
 require 'strscan'
@@ -278,7 +279,7 @@ module OHDL
     end
     
     def ex_html_enc(str)
-      html_escape(str).gsub(/ /n, '&nbsp;').gsub(/\n/n, '<br>')
+      html_escape(str).gsub(/ /, '&nbsp;').gsub(/\n/, '<br>')
     end
     
     def strhash(str)

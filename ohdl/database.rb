@@ -12,6 +12,8 @@ module OHDL
         @sqdb.translator.add_translator(type) do |t, v|
           if v.class == String then
             v.encode("UTF-8")
+          else
+            v
           end
         end
       end
