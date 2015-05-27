@@ -1,3 +1,5 @@
+# coding: utf-8
+
 module OHDL
   class Config
     def initialize(&block)

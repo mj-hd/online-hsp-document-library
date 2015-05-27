@@ -1,4 +1,7 @@
+# coding: utf-8
+
 require 'fileutils'
+require 'uri'
 
 module OHDL
   class CacheBase
@@ -22,7 +25,7 @@ module OHDL
       if s == ''
         '%5fempty'
       else
-        s.gsub(/[^\w\-]/) {|ch| sprintf('%%%02X', ch[0].to_i) }
+        URI.escape(s)
       end
     end
   end

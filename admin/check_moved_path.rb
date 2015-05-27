@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
 # Moved テーブルに存在する新パスが not found にならないかチェック
 

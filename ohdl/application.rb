@@ -1,3 +1,5 @@
+# coding: utf-8
+
 require 'uri'
 require 'cgi'
 
@@ -111,7 +113,7 @@ module OHDL
     
     def parse_request(path, params, params_str)
       notfound = ['notfound', path]
-      path = URI.decode(path)
+      path = URI.decode(path).force_encoding("UTF-8")
       unless path and path.index(@config.uripath) == 0
         return notfound
       end

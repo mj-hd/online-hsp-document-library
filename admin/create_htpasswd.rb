@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
 print 'account name: '
 account_name = $stdin.gets.chomp

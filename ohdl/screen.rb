@@ -1,8 +1,10 @@
 # coding: utf-8
+
 require './ohdl/cache'
 require 'erb'
 require 'strscan'
 require 'kconv'
+require 'uri'
 
 module OHDL
   class URIMapper
@@ -129,7 +131,7 @@ module OHDL
     
     private
     def encode_uri(str)
-      str.gsub(/[^\w\.\-]/) {|ch| sprintf('%%%02X', ch[0].to_i) }
+      URI.escape(str)
     end
     
     def path2uri(path)
